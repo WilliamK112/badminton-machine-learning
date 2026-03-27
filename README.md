@@ -1,54 +1,87 @@
-# Badminton Analysis Integration
+# Badminton AI Tracking & Analysis
 
-Integrates pose detection and skeletal analysis with [Badminton-Analysis](https://github.com/ToanNguyenKhanh/Badminton-Analysis) project.
+A practical badminton video analysis pipeline focused on **stable 2-player tracking + shuttle tracking + pose visualization**.
 
-## 🎯 Demo Outputs
+## About
 
-| Frame Analysis | Detection Result |
-|----------------|------------------|
-| ![Demo Frame](./demo_frame.jpg) | ![Demo Screenshot](./demo_screenshot.png) |
+This project is built for demo-ready, reproducible badminton analysis outputs from match videos.
+Current focus:
+- Keep only on-court 2 players (avoid audience / sideline jumps)
+- Keep shuttle trajectory continuous and visible
+- Preserve human pose (skeleton) data and visualization in the final output
 
-### Latest Progress GIF
+## Tech Stack / Models Used
+
+### Core Libraries
+- Python
+- OpenCV
+- Ultralytics YOLO
+- NumPy / Pandas / SciPy
+
+### Detection & Tracking Models
+- **Player detection/tracking:** `yolo11n.pt` (person class + temporal constraints)
+- **Pose estimation:** `yolo11n-pose.pt`
+- **Shuttle primary model:**
+  - `Badminton-Analysis/train/shuttle_output/models/weights/best.pt`
+- **Shuttle fallback model:** `yolo11n.pt` (sports-ball class fallback)
+
+### Tracking/Filtering Strategies
+- ROI filtering (court-focused region)
+- Top/Bottom 2-player slot assignment
+- Temporal anti-jump constraints for player boxes
+- Shuttle missing-frame recovery via interpolation + velocity-based prediction
+
+## Project Structure
+
+```text
+badminton-ai/
+├── README.md
+├── PROJECT_STATUS.md
+├── src/
+│   ├── pipeline/
+│   │   └── runner.py                # main entry
+│   ├── integration/
+│   │   └── pipeline.py              # player + shuttle + pose integration
+│   ├── player/
+│   │   └── tracker.py               # 2-player constrained tracker
+│   ├── shuttle/
+│   │   └── tracker.py               # rewritten shuttle tracker (primary+fallback)
+│   └── ...                          # historical experiments / training scripts
+├── demo/
+│   ├── gif/
+│   │   ├── badminton_github_long.gif
+│   │   └── badminton_github_smooth.gif
+│   └── q2p_random10_v4_skeleton/    # real sampled frames for manual verification
+└── output_*/                         # local generated outputs (ignored in git)
+```
+
+## Current Output Style
+
+Output video includes:
+- Player 1 / Player 2 labels (on top of boxes)
+- Skeleton keypoints + limbs
+- Shuttle marker + `SHUTTLE` label
+
+## Quick Start
+
+```bash
+cd /Users/William/.openclaw/workspace/projects/badminton-ai
+source .venv/bin/activate
+
+python -m src.pipeline.runner thisone.mp4 -o output_demo -i 2 -m 3000
+```
+
+## Demo (Latest)
+
+### Long Progress GIF
 
 ![Badminton Long Demo](./demo/gif/badminton_github_long.gif)
 
-## Features
+### Smooth GIF
 
-- **Player Tracking**: Uses original project's YOLO model for player bounding boxes
-- **Pose Detection**: Uses YOLO11n-pose for skeleton detection
-- **Feature Extraction**: 
-  - Shoulder angle/width
-  - Arm angles (left/right)
-  - Torso angle/height
-  - Leg angles (left/right)
-  - Reach distance
-  - Motion velocities
-- **Point Prediction**: Predicts winner based on skeletal movement patterns
+![Badminton Smooth Demo](./demo/gif/badminton_github_smooth.gif)
 
-## Files
+## Notes
 
-| File | Description |
-|------|-------------|
-| `pose_tracker.py` | Pose detection and feature extraction |
-| `point_predictor.py` | Point outcome prediction model |
-| `integrate.py` | Main integration pipeline |
-
-## Usage
-
-```bash
-# In Badminton-Analysis directory
-python integrate.py input_video.mp4 output_video.mp4
-```
-
-## Requirements
-
-```bash
-pip install ultralytics opencv-python pandas scikit-learn
-```
-
-## Output Files
-
-- `pose_data.json` - Skeletal features per frame
-- `rally_analysis.json` - Rally-level feature summaries
-- `win_prob_timeline.json` - Win probability over time
-- `analysis_outputs.json` - Analysis summary
+- This repo keeps the latest demo-facing pipeline and visuals clean.
+- Large temporary artifacts (outputs/reports/trash) are local and excluded from git.
