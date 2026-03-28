@@ -48,10 +48,10 @@ badminton-ai/
 │   │   └── tracker.py               # rewritten shuttle tracker (primary+fallback)
 │   └── ...                          # historical experiments / training scripts
 ├── demo/
-│   ├── gif/
-│   │   ├── badminton_github_long.gif
-│   │   └── badminton_github_smooth.gif
-│   └── q2p_random10_v4_skeleton/    # real sampled frames for manual verification
+│   └── gif/
+│       ├── 截屏2026-03-25 01.40.31.png
+│       ├── frame_0010.jpg
+│       └── badminton_github_long.gif
 └── output_*/                         # local generated outputs (ignored in git)
 ```
 
@@ -73,13 +73,11 @@ python -m src.pipeline.runner thisone.mp4 -o output_demo -i 2 -m 3000
 
 ## Demo (Latest)
 
-### Long Progress GIF
+![截屏2026-03-25 01.40.31](./demo/gif/截屏2026-03-25%2001.40.31.png)
 
-![Badminton Long Demo](./demo/gif/badminton_github_long.gif)
+![frame_0010](./demo/gif/frame_0010.jpg)
 
-### Smooth GIF
-
-![Badminton Smooth Demo](./demo/gif/badminton_github_smooth.gif)
+![badminton_github_long](./demo/gif/badminton_github_long.gif)
 
 ## Notes
 
