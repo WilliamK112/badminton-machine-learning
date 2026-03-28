@@ -2,6 +2,20 @@
 
 A practical badminton video analysis pipeline focused on **stable 2-player tracking + shuttle tracking + pose visualization**.
 
+## Demo (Latest)
+
+<table>
+  <tr>
+    <td><img src="./demo/gif/%E6%88%AA%E5%B1%8F2026-03-25%2001.40.31.png" alt="screenshot" width="420"/></td>
+    <td><img src="./demo/gif/frame_0010.jpg" alt="frame_0010" width="420"/></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="./demo/gif/badminton_github_long.gif" alt="badminton_github_long" width="900"/>
+    </td>
+  </tr>
+</table>
+
 ## About
 
 This project is built for demo-ready, reproducible badminton analysis outputs from match videos.
@@ -70,20 +84,6 @@ source .venv/bin/activate
 
 python -m src.pipeline.runner thisone.mp4 -o output_demo -i 2 -m 3000
 ```
-
-## Demo (Latest)
-
-<table>
-  <tr>
-    <td><img src="./demo/gif/%E6%88%AA%E5%B1%8F2026-03-25%2001.40.31.png" alt="screenshot" width="420"/></td>
-    <td><img src="./demo/gif/frame_0010.jpg" alt="frame_0010" width="420"/></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <img src="./demo/gif/badminton_github_long.gif" alt="badminton_github_long" width="900"/>
-    </td>
-  </tr>
-</table>
 
 ## Notes
 
