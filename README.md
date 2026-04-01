@@ -47,6 +47,22 @@ A practical badminton video analysis pipeline focused on **stable 2-player track
 
 > Full video previews: `thisone_full_v4_preview.mp4`, `thisone_full_v5_preview.mp4`, `thisone_full_v6_preview.mp4` (in `reports/` — see artifact download above)
 
+### 3D Court Box Model
+
+> The 3D court bounding box reconstructed from a single camera view — player + shuttle trajectories projected into world (X, Y, Z) space.
+
+**3D scatter — court space (X, Y, Z):**
+
+| 3D Court Scatter |
+|----------|
+| <img src="./demo/box_3d/view_3d_scatter.png" alt="3D court scatter" width="800"/> |
+
+**3D skeleton replay video:**
+
+| 3D Skeleton Replay |
+|----------|
+| <video src="./demo/box_3d/replay_3d_skeleton.mp4" width="800" controls/> |
+
 ## About
 
 This project is built for demo-ready, reproducible badminton analysis outputs from match videos.
