@@ -2,7 +2,6 @@
 
 A practical badminton video analysis pipeline focused on **stable 2-player tracking + shuttle tracking + 3D skeleton reconstruction** via 2D-to-3D lifting.
 
-[![Replay3D CI](https://github.com/WilliamK112/badminton-machine-learning/actions/workflows/replay3d-ci.yml/badge.svg)](https://github.com/WilliamK112/badminton-machine-learning/actions/workflows/replay3d-ci.yml)
 
 > GitHub Actions CI: see `.github/workflows/replay3d-ci.yml` for the Replay3D package+gate regression workflow.
 >
@@ -50,10 +49,6 @@ A practical badminton video analysis pipeline focused on **stable 2-player track
 ### 3D Court Box Model
 
 > The 3D court bounding box reconstructed from a single camera view — player + shuttle trajectories projected into world (X, Y, Z) space.
-
-**3D box summary (v11b — latest):**
-
-| <img src="./demo/box_3d/v5_3d_summary.png" alt="3D court box" width="800"/> |
 
 **3D skeleton replay (v11b — latest):**
 
