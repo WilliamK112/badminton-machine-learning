@@ -1,5 +1,7 @@
 # Badminton Tracking & Analysis — 3D Reconstruction
 
+Built by [William Kang (Ching-Wei Kang)](https://williamkang.com/) - [portfolio and identity page](https://williamkang.com/about-william-kang.html).
+
 A practical badminton video analysis pipeline focused on **stable 2-player tracking + shuttle tracking + 3D skeleton reconstruction** via 2D-to-3D lifting.
 
 
